@@ -37,7 +37,7 @@ class SEKeywords extends ModuleGraph
 	{
 		$this->name = 'sekeywords';
 		$this->tab = 'analytics_stats';
-		$this->version = 1.0;
+		$this->version = 1.1;
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 
@@ -55,6 +55,7 @@ class SEKeywords extends ModuleGraph
 
 		$this->displayName = $this->l('Search engine keywords');
 		$this->description = $this->l('Displays which keywords have led visitors to your website.');
+		$this->ps_versions_compliancy = array('min' => '1.5.6.1', 'max' => _PS_VERSION_);
 	}
 
 	public function install()
