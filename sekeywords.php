@@ -37,7 +37,7 @@ class SEKeywords extends ModuleGraph
 	{
 		$this->name = 'sekeywords';
 		$this->tab = 'analytics_stats';
-		$this->version = '1.2';
+		$this->version = '1.2.2';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 
