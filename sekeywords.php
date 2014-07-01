@@ -173,7 +173,7 @@ class SEKeywords extends ModuleGraph
 			'.$form.'<br/>'.$table;
 		}
 		else
-			$this->html .= '<p>'.$form.'<strong>'.$this->l('No keywords').'</strong></p>';
+			$this->html .= $form.'<p><strong>'.$this->l('No keywords').'</strong></p>';
 
 		return $this->html;
 	}
