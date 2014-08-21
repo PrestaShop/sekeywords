@@ -37,7 +37,7 @@ class SEKeywords extends ModuleGraph
 	{
 		$this->name = 'sekeywords';
 		$this->tab = 'analytics_stats';
-		$this->version = '1.2.2';
+		$this->version = '1.2.3';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 
@@ -173,7 +173,7 @@ class SEKeywords extends ModuleGraph
 			'.$form.'<br/>'.$table;
 		}
 		else
-			$this->html .= '<p>'.$form.'<strong>'.$this->l('No keywords').'</strong></p>';
+			$this->html .= $form.'<p><strong>'.$this->l('No keywords').'</strong></p>';
 
 		return $this->html;
 	}
