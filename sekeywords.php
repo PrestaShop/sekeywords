@@ -115,7 +115,7 @@ class SEKeywords extends ModuleGraph
 			<h4>'.$this->l('Identify external search engine keywords').'</h4>
 			<p>'
 			.$this->l('This is one of the most common ways of finding a website through a search engine.').
-			$this->l('Identifying the most popular keywords entered by your new visitors allows you to see the products you should put in front if you want to achieve better visibility in search engines.').'&nbsp;'.
+			$this->l('Identifying the most popular keywords entered by your new visitors allows you to see the products you should put in front if you want to achieve better visibility in search engines.').'&nbsp;
 			</p>
 			<p>&nbsp;</p>
 			<h4>'.$this->l('How does it work?').'</h4>
