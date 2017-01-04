@@ -38,7 +38,7 @@ class sekeywords extends ModuleGraph
     {
         $this->name = 'sekeywords';
         $this->tab = 'analytics_stats';
-        $this->version = '1.4.0';
+        $this->version = '2.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
 
@@ -54,8 +54,9 @@ class sekeywords extends ModuleGraph
 				HAVING occurences > '.(int)Configuration::get('SEK_MIN_OCCURENCES').'
 				ORDER BY occurences DESC';
 
-        $this->displayName = $this->l('Search engine keywords');
-        $this->description = $this->l('Displays which keywords have led visitors to your website.');
+        $this->displayName = $this->trans('Search engine keywords', array(), 'Modules.Sekeywords.Admin');
+        $this->description = $this->trans('Displays which keywords have led visitors to your website.', array(), 'Modules.Sekeywords.Admin');
+        $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => _PS_VERSION_);
     }
 
     public function install()
@@ -115,33 +116,33 @@ class sekeywords extends ModuleGraph
 		<div class="panel-heading">'
             .$this->displayName.'
 		</div>
-		<h4>'.$this->l('Guide').'</h4>
+		<h4>'.$this->trans('Guide', array(), 'Admin.Global').'</h4>
 		<div class="alert alert-warning">
-			<h4>'.$this->l('Identify external search engine keywords').'</h4>
+			<h4>'.$this->trans('Identify external search engine keywords', array(), 'Modules.Sekeywords.Admin').'</h4>
 			<p>'
-            .$this->l('This is one of the most common ways of finding a website through a search engine.').'&nbsp;'.
-            $this->l('Identifying the most popular keywords entered by your new visitors allows you to see the products you should put in front if you want to achieve better visibility in search engines.').'
+            .$this->trans('This is one of the most common ways of finding a website through a search engine.', array(), 'Modules.Sekeywords.Admin').'&nbsp;'.
+            $this->trans('Identifying the most popular keywords entered by your new visitors allows you to see the products you should put in front if you want to achieve better visibility in search engines.', array(), 'Modules.Sekeywords.Admin').'
 			</p>
 			<p>&nbsp;</p>
-			<h4>'.$this->l('How does it work?').'</h4>
+			<h4>'.$this->trans('How does it work?', array(), 'Modules.Sekeywords.Admin').'</h4>
 			<p>'
-            .$this->l('When a visitor comes to your website, the web server notes the URL of the site he/she comes from. This module then parses the URL, and if it finds a reference to a known search engine, it finds the keywords in it.').'<br>'.
-            $this->l('This module can recognize all the search engines listed in PrestaShop\'s Stats/Search Engine page -- and you can add more!').'<br>'.
-            $this->l('IMPORTANT NOTE: in September 2013, Google chose to encrypt its searches queries using SSL. This means all the referer-based tools in the World (including this one) cannot identify Google keywords anymore.').'
+            .$this->trans('When a visitor comes to your website, the web server notes the URL of the site he/she comes from. This module then parses the URL, and if it finds a reference to a known search engine, it finds the keywords in it.', array(), 'Modules.Sekeywords.Admin').'<br>'.
+            $this->trans('This module can recognize all the search engines listed in PrestaShop\'s Stats/Search Engine page -- and you can add more!', array(), 'Modules.Sekeywords.Admin').'<br>'.
+            $this->trans('IMPORTANT NOTE: in September 2013, Google chose to encrypt its searches queries using SSL. This means all the referer-based tools in the World (including this one) cannot identify Google keywords anymore.', array(), 'Modules.Sekeywords.Admin').'
 			</p>
 		</div>
-		<p>'.($total == 1 ? sprintf($this->l('%d keyword matches your query.'), $total) : sprintf($this->l('%d keywords match your query.'), $total)).'</p>';
+		<p>'.($total == 1 ? $this->trans('%d keyword matches your query.', array($total), 'Modules.Sekeywords.Admin') : $this->trans('%d keywords match your query.', array($total), 'Modules.Sekeywords.Admin')).'</p>';
 
         $form = '
 		<form action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post" class="form-horizontal">
 			<div class="row row-margin-bottom">
-				<label class="control-label col-lg-3">'.$this->l('Filter by keyword').'</label>
+				<label class="control-label col-lg-3">'.$this->trans('Filter by keyword', array(), 'Modules.Sekeywords.Admin').'</label>
 				<div class="col-lg-9">
 					<input type="text" name="SEK_FILTER_KW" value="'.Tools::htmlentitiesUTF8(Configuration::get('SEK_FILTER_KW')).'" />
 				</div>
 			</div>
 			<div class="row row-margin-bottom">
-				<label class="control-label col-lg-3">'.$this->l('And min occurrences').'</label>
+				<label class="control-label col-lg-3">'.$this->trans('And min occurrences', array(), 'Modules.Sekeywords.Admin').'</label>
 				<div class="col-lg-9">
 					<input type="text" name="SEK_MIN_OCCURENCES" value="'.(int)Configuration::get('SEK_MIN_OCCURENCES').'" />
 				</div>
@@ -149,7 +150,7 @@ class sekeywords extends ModuleGraph
 			<div class="row row-margin-bottom">
 				<div class="col-lg-9 col-lg-offset-3">
 					<button type="submit" class="btn btn-default" name="submitSEK">
-						<i class="icon-ok"></i> '.$this->l('Apply').'
+						<i class="icon-ok"></i> '.$this->trans('Apply', array(), 'Admin.Actions').'
 					</button>
 				</div>
 			</div>
@@ -160,8 +161,8 @@ class sekeywords extends ModuleGraph
 			<table class="table">
 				<thead>
 					<tr>
-						<th><span class="title_box active">'.$this->l('Keywords').'</span></th>
-						<th><span class="title_box active">'.$this->l('Occurrences').'</span></th>
+						<th><span class="title_box active">'.$this->trans('Keywords', array(), 'Modules.Sekeywords.Admin').'</span></th>
+						<th><span class="title_box active">'.$this->trans('Occurrences', array(), 'Modules.Sekeywords.Admin').'</span></th>
 					</tr>
 				</thead>
 				<tbody>';
@@ -172,10 +173,10 @@ class sekeywords extends ModuleGraph
             }
             $table .= '</tbody></table>';
             $this->html .= '<div>'.$this->engine(array('type' => 'pie')).'</div>
-			<a class="btn btn-default" href="'.Tools::safeOutput($_SERVER['REQUEST_URI']).'&export=1&exportType=language"><<i class="icon-cloud-upload"></i> '.$this->l('CSV Export').'</a>
+			<a class="btn btn-default" href="'.Tools::safeOutput($_SERVER['REQUEST_URI']).'&export=1&exportType=language"><<i class="icon-cloud-upload"></i> '.$this->trans('CSV Export', array(), 'Admin.Global').'</a>
 			'.$form.'<br/>'.$table;
         } else {
-            $this->html .= $form.'<p><strong>'.$this->l('No keywords').'</strong></p>';
+            $this->html .= $form.'<p><strong>'.$this->trans('No keywords', array(), 'Modules.Sekeywords.Admin').'</strong></p>';
         }
 
         return $this->html;
@@ -225,7 +226,7 @@ class sekeywords extends ModuleGraph
 
     protected function getData($layers)
     {
-        $this->_titles['main'] = $this->l('Top 10 keywords');
+        $this->_titles['main'] = $this->trans('Top 10 keywords', array(), 'Modules.Sekeywords.Admin');
         $total_result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($this->query.$this->getDate().$this->query2);
         $total = 0;
         $total2 = 0;
@@ -239,7 +240,7 @@ class sekeywords extends ModuleGraph
             $total2 += $row['occurences'];
         }
         if ($total >= $total2) {
-            $this->_legend[] = $this->l('Others');
+            $this->_legend[] = $this->trans('Others', array(), 'Modules.Sekeywords.Admin');
             $this->_values[] = $total - $total2;
         }
     }
