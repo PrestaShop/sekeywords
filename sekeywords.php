@@ -56,7 +56,7 @@ class sekeywords extends ModuleGraph
 
         $this->displayName = $this->trans('Search engine keywords', array(), 'Modules.Sekeywords.Admin');
         $this->description = $this->trans('Displays which keywords have led visitors to your website.', array(), 'Modules.Sekeywords.Admin');
-        $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = array('min' => '1.7.1.0', 'max' => _PS_VERSION_);
     }
 
     public function install()
