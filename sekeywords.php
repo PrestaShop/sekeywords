@@ -55,6 +55,7 @@ class SEKeywords extends ModuleGraph
 
 		$this->displayName = $this->l('Search engine keywords');
 		$this->description = $this->l('Displays which keywords have led visitors to your website.');
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.7.0.99');
 	}
 
 	public function install()
