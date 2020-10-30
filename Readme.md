@@ -2,7 +2,7 @@
 
 ## About
 
-Displays which keywords have led visitors to your website.
+Enrich your statistics, get all keywords through which visitors reached your store.
 
 ## Reporting issues
 
